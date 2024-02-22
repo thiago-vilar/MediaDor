@@ -17,9 +17,6 @@ import SmartWatchScreen from './screens/SmartWatchScreen';
 import AlexaScreen from './screens/AlexaScreen';
 import Header from './components/Header';
 
-import AmbulanceScreen from './screens/AmbulanceScreen';
-import LoginScreen from './screens/LoginScreen';
-
 const Stack = createNativeStackNavigator();
 
 const buttons = [
@@ -67,22 +64,19 @@ const HomeScreen = ({ navigation }) => {
         )}
         contentContainerStyle={styles.flatlist}
       />
-
+      
       <View style={styles.statusBar}>
-        <TouchableOpacity style={styles.statusBarButton} onPress={() => navigation.navigate('LoginScreen')}>
+        <TouchableOpacity style={styles.statusBarButton} onPress={() => console.log('Login')}>
           <MaterialIcons name="login" size={35} color="silver" />
         </TouchableOpacity>
-
-        <TouchableOpacity style={styles.statusBarButton} onPress={() => navigation.navigate('Bem Vindo!')}>
+        <TouchableOpacity style={styles.statusBarButton} onPress={() => console.log('Home')}>
           <FontAwesome name="home" size={35} color="silver"/>
         </TouchableOpacity>
-
         <TouchableOpacity style={styles.statusBarButton} onPress={() => console.log('Ambulance')}>
           <FontAwesome5 name='ambulance' size={35} color="silver" />
         </TouchableOpacity>
       </View>
-
-             
+    
     </View>
     
   );
@@ -115,8 +109,6 @@ const App = () => {
         <Stack.Screen name="MedicalRecordScreen" component={MedicalRecordScreen} />
         <Stack.Screen name="SmartWatchScreen" component={SmartWatchScreen} />
         <Stack.Screen name="AlexaScreen" component={AlexaScreen} />
-        <Stack.Screen name="LoginScreen" component={LoginScreen} />
-        <Stack.Screen name="AmbulanceScreen" component={AmbulanceScreen} />
       </Stack.Navigator>
     </NavigationContainer>
     
