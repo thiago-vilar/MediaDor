@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
 import { MaterialCommunityIcons, AntDesign } from '@expo/vector-icons';
 
+import StatusBarCustom from '../components/StatusBarCustom.js';
+
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -58,6 +60,7 @@ const LoginScreen = () => {
       <TouchableOpacity onPress={handleCreateAccount}>
         <Text style={styles.createAccountText}>Create New Account</Text>
       </TouchableOpacity>
+      <StatusBarCustom /> 
     </View>
   );
 };

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, FlatList } from 'react-native';
+import { View, Image, Text, StyleSheet, TouchableOpacity, FlatList } from 'react-native';
 import { Ionicons, MaterialCommunityIcons, FontAwesome, FontAwesome5, MaterialIcons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
@@ -15,7 +15,9 @@ import MedicationsScreen from './screens/MedicationsScreen';
 import MedicalRecordScreen from './screens/MedicalRecordScreen';
 import SmartWatchScreen from './screens/SmartWatchScreen';
 import AlexaScreen from './screens/AlexaScreen';
+
 import Header from './components/Header';
+import StatusBarCustom from './components/StatusBarCustom.js';
 
 import AmbulanceScreen from './screens/AmbulanceScreen';
 import LoginScreen from './screens/LoginScreen';
@@ -66,23 +68,9 @@ const HomeScreen = ({ navigation }) => {
           </TouchableOpacity>
         )}
         contentContainerStyle={styles.flatlist}
-      />
-
-      <View style={styles.statusBar}>
-        <TouchableOpacity style={styles.statusBarButton} onPress={() => navigation.navigate('LoginScreen')}>
-          <MaterialIcons name="login" size={35} color="silver" />
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.statusBarButton} onPress={() => navigation.navigate('Bem Vindo!')}>
-          <FontAwesome name="home" size={35} color="silver"/>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.statusBarButton} onPress={() => console.log('Ambulance')}>
-          <FontAwesome5 name='ambulance' size={35} color="silver" />
-        </TouchableOpacity>
-      </View>
-
-             
+        
+      />     
+      <StatusBarCustom />        
     </View>
     
   );
@@ -103,20 +91,29 @@ const App = () => {
             textShadowOffset: {width: -1, height: 1}, // Posição da sombra do texto
             textShadowRadius: 10, // Raio da sombra do texto
           },
+          headerRight: () => (
+            <View style={{ flexDirection: 'row', alignItems: 'center', marginRight: 10 }}>
+              <Text style={{ color: '#fff', marginRight: 6 }}>Ygor</Text>
+              <Image
+                source={require('./assets/img/ygor.jpg')}
+                style={{ width: 30, height: 30, borderRadius: 15 }}
+              />
+            </View>
+          ),
         }}>
-        <Stack.Screen name="Bem Vindo!" component={HomeScreen} />
+        <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ title: 'Bem Vindo!' }} />
         {/* Outras telas */}
-        <Stack.Screen name="CalendarScreen" component={CalendarScreen} />
-        <Stack.Screen name="SymptomsScreen" component={SymptomsScreen} />
-        <Stack.Screen name="PainCrisesScreen" component={PainCrisesScreen} />
-        <Stack.Screen name="AdverseReactionsScreen" component={AdverseReactionsScreen} />
-        <Stack.Screen name="AllergiesScreen" component={AllergiesScreen} />
-        <Stack.Screen name="MedicationsScreen" component={MedicationsScreen} />
-        <Stack.Screen name="MedicalRecordScreen" component={MedicalRecordScreen} />
-        <Stack.Screen name="SmartWatchScreen" component={SmartWatchScreen} />
-        <Stack.Screen name="AlexaScreen" component={AlexaScreen} />
-        <Stack.Screen name="LoginScreen" component={LoginScreen} />
-        <Stack.Screen name="AmbulanceScreen" component={AmbulanceScreen} />
+        <Stack.Screen name="CalendarScreen" component={CalendarScreen} options={{ title: 'Agenda' }} />
+        <Stack.Screen name="SymptomsScreen" component={SymptomsScreen} options={{ title: 'Sintomas' }} />
+        <Stack.Screen name="PainCrisesScreen" component={PainCrisesScreen} options={{ title: 'Dores' }} />
+        <Stack.Screen name="AdverseReactionsScreen" component={AdverseReactionsScreen} options={{ title: 'Reações Adversas!' }} />
+        <Stack.Screen name="AllergiesScreen" component={AllergiesScreen} options={{ title: 'Alergias' }} />
+        <Stack.Screen name="MedicationsScreen" component={MedicationsScreen} options={{ title: 'Medicamentos' }} />
+        <Stack.Screen name="MedicalRecordScreen" component={MedicalRecordScreen} options={{ title: 'Prontuário' }} />
+        <Stack.Screen name="SmartWatchScreen" component={SmartWatchScreen} options={{ title: 'SmartWatch' }} />
+        <Stack.Screen name="AlexaScreen" component={AlexaScreen} options={{ title: 'Alexa' }} />
+        <Stack.Screen name="LoginScreen" component={LoginScreen} options={{ title: 'Login' }} />
+        <Stack.Screen name="AmbulanceScreen" component={AmbulanceScreen} options={{ title: 'Emergência 24hs' }} />
       </Stack.Navigator>
     </NavigationContainer>
     
